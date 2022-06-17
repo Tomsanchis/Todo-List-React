@@ -113,7 +113,9 @@ form button:hover {
 }
 
 .card {
-  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
   background: #fff;
   border-radius: 10px;
   margin: 20px;
@@ -140,9 +142,14 @@ form button:hover {
   text-align: left;
   font-weight: bold;
   font-size: 1.8rem;
+  margin: 0 0 0 10px;
 }
 
 .card div {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  font-size: 1.2rem !important;
 }
