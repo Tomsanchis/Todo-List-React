@@ -5,8 +5,8 @@ function App() {
   const [data, setdata] = useState("");
   const [todos, setTodos] = useState([]);
 
-  const FormaterDate = (date) => {
-    let newDate = new Date(date).toLocaleDateString("fr-FR", {
+  const FormaterDate = () => {
+    let newDate = new Date().toLocaleDateString("fr-FR", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -53,7 +53,7 @@ function App() {
               onChange={(e) => setdata(e.target.value)}
               value={data}
             />
-            <button type="submit">Add</button>
+            <button type="submit">add</button>
           </form>
           <div id="render-todo">
             {todos.map((todo, index) => (
@@ -61,7 +61,7 @@ function App() {
             ))}
           </div>
           <div id="footer">
-            <p>Made with ❤️ by Tom</p>
+            <p>Made with ❤️ by [PABLO]</p>
           </div>
         </section>
       </main>

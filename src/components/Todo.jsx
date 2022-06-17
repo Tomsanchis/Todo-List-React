@@ -5,7 +5,7 @@ const Todo = (props) => {
     <div className="card">
       <div>
         <p>{props.todo.content}</p>
-        <p>{props.id}</p>
+        <p>{props.todo.id}</p>
       </div>
     </div>
   );
