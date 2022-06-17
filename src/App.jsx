@@ -30,6 +30,9 @@ function App() {
     setdata("");
   };
 
+let date = new Date()
+let tbDate = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
   return (
     <div className="container">
       <header>
@@ -42,7 +45,7 @@ function App() {
       </header>
       <main>
         <section id="todo">
-          <h2>Enjoy your Wednesday 👀👊</h2>
+          <h2>Enjoy your {tbDate[date.getDay()]} 👀👊</h2>
           <form action="#" onSubmit={(e) => submit(e)}>
             <label htmlFor="item">Add Item</label>
             <input
@@ -53,7 +56,7 @@ function App() {
               onChange={(e) => setdata(e.target.value)}
               value={data}
             />
-            <button type="submit">add</button>
+            <button type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
           </form>
           <div id="render-todo">
             {todos.map((todo, index) => (
