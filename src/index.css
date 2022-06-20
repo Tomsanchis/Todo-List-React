@@ -9,16 +9,15 @@ html {
 body {
   margin: 0 auto;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    background: #00082F;
-    color: #fff;
-    font-size: 1.7rem;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #00082F;
+  color: #fff;
+  font-size: 1.7rem;
 }
 
 h1 {
@@ -98,7 +97,6 @@ form button {
   border-bottom-left-radius: 0px;
   border: none;
   background: #fff;
-  border-left: #000 solid 1px;
   transition: 0.5s;
 }
 
@@ -152,4 +150,35 @@ form button:hover {
 
 .date {
   font-size: 1.2rem !important;
+}
+
+.error {
+  animation-name: scale-up-center;
+  animation-duration: 0.4s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: none;
+}
+
+
+#filter-container {
+  margin: 25px 0 0 0;
+}
+
+#filter-container button {
+  margin: 5px;
+  padding: 15px 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+
+#filter-container button:hover {
+  background: rgb(90, 90, 148);
+  color: #fff;
 }

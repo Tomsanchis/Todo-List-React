@@ -4,6 +4,8 @@ import Todo from "./components/Todo";
 function App() {
   const [data, setdata] = useState("");
   const [todos, setTodos] = useState([]);
+  const [error, seterror] = useState(false);
+  const [filter, setFilter] = useState("ALL");
 
   const FormaterDate = () => {
     let newDate = new Date().toLocaleDateString("fr-FR", {
@@ -19,6 +21,12 @@ function App() {
 
   const submit = (e) => {
     e.preventDefault();
+
+    if (data.length > 0) {
+      seterror(false);
+    } else {
+      seterror(true);
+    }
     {
       const todo = {
         id: FormaterDate(),
@@ -30,8 +38,16 @@ function App() {
     setdata("");
   };
 
-let date = new Date()
-let tbDate = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const date = new Date();
+  const tbDate = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
   return (
     <div className="container">
@@ -56,12 +72,66 @@ let tbDate = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
               onChange={(e) => setdata(e.target.value)}
               value={data}
             />
-            <button type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
+            <button type="submit">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
           </form>
+          {error && (
+            <p
+              className="error"
+              style={{ color: "red", fontWeight: "italic", fontSize: "2rem" }}
+            >
+              <i class="fa-solid fa-triangle-exclamation"></i> Please, Enter
+              name item ...
+            </p>
+          )}
+          <div id="filter-container">
+            <button
+              onClick={() => {
+                setFilter("DONE");
+              }}
+            >
+              Done
+            </button>
+            <button
+              onClick={() => {
+                setFilter("TODO");
+              }}
+            >
+              Todo
+            </button>
+            <button
+              onClick={() => {
+                setFilter("ALL");
+              }}
+            >
+              All
+            </button>
+          </div>
           <div id="render-todo">
-            {todos.map((todo, index) => (
-              <Todo key={index} todo={todo} />
-            ))}
+            {todos
+              .filter((todo) => {
+                if (filter === "ALL") {
+                  return true;
+                }
+                return filter === "DONE" ? todo.done : !todo.done;
+              })
+              .map((todo, index) => (
+                <Todo
+                  key={index}
+                  todo={todo}
+                  checkTodo={(id) => {
+                    setTodos(
+                      todos.map((todo) => {
+                        if (todo.id === id) {
+                          return { ...todo, done: !todo.done };
+                        }
+                        return todo;
+                      })
+                    );
+                  }}
+                />
+              ))}
           </div>
           <div id="footer">
             <p>Made with ❤️ by [PABLO]</p>
